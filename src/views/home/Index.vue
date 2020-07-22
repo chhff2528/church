@@ -9,10 +9,10 @@
       <param name="wmode" value="transparent">
       <param name="flashvars"
         value="is_barrage=on&amp;VolumeM=0&amp;vid=234028&amp;uid=e405i666d0&amp;useFastDns=off&amp;"></object>
-    <iframe id="entry" src="<?php echo $callbackUrl;?>" frameborder="0" allowfullscreen="true"
+    <!-- <iframe id="entry" src="polyv 提供的网址" frameborder="0" allowfullscreen="true"
       allow="microphone; camera">
 
-    </iframe>
+    </iframe> -->
   </div>
 </template>
 <script>
@@ -44,5 +44,8 @@
 <style scoped>
   [v-cloak] {
     display: none;
+  }
+  .index{
+    margin-top: 1.2rem;
   }
 </style>
