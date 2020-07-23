@@ -38,8 +38,8 @@ export function parseQuery() {
   return res;
 }
 
-const VUE_APP_API_URL = process.env.VUE_APP_API_URL || `${location.origin}/api`;
-// const VUE_APP_API_URL = process.env.VUE_APP_API_URL || `http://192.168.0.103/api`;
+// const VUE_APP_API_URL = process.env.VUE_APP_API_URL || `${location.origin}/api`;
+ const VUE_APP_API_URL = process.env.VUE_APP_API_URL || `http://a3927.zehoupek.com`;
 const VUE_APP_WS_URL =
   process.env.VUE_APP_WS_URL || `ws:${location.hostname}:20003`;
 

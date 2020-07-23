@@ -5,7 +5,11 @@ import request from "@utils/request";
  * @returns {*}
  */
 export function getHomeData() {
-  return request.get("/videodata/getvideos", {});
+  return request.get("/receiever.php", {});
+}
+// 日常借口
+export function getData(params) {
+  return request.post("/receiever.php", params);
 }
 
 /**

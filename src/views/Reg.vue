@@ -86,7 +86,8 @@
             console.log(JSON.stringify(this.form));
             //   //接口
             let params = JSON.stringify(this.form);
-            getArticleBanner()
+            //getArticleBanner这是接口地址，参数params
+            getArticleBanner(params)
               .then(res => {
                 console.log(res);
               })
