@@ -9,7 +9,7 @@ export function getHomeData() {
 }
 // 日常借口
 export function getData(params) {
-  return request.post("/receiever.php", params);
+  return request.get("/receiever.php", params);
 }
 
 /**

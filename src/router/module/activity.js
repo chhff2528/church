@@ -4,7 +4,7 @@ export default [
     // component: () => import("@views/home/index.vue")
   },
   {
-    path: "/activity/bargain",
+    path: "/activity/fuyin",
     name: "GoodsBargain",
     meta: {
       title: "福音",
@@ -15,7 +15,7 @@ export default [
     component: () => import("@views/activity/GoodsBargain.vue")
   },
   {
-    path: "/activity/group",
+    path: "/activity/everyday",
     name: "GoodsGroup",
     meta: {
       title: "日常证道",

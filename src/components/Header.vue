@@ -41,13 +41,13 @@
             name: "日常证道",
             icon1: "icon-yingyongchengxu-xianxing",
             icon2: "icon-yingyongchengxu",
-            url: "/activity/group",
+            url: "/activity/everyday",
           },
           {
             name: "福音",
             icon1: "icon-caigou-xianxing",
             icon2: "icon-caigou",
-            url: "/activity/bargain",
+            url: "/activity/fuyin",
           },
         ],
       };

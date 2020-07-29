@@ -17,13 +17,14 @@ function baseRequest(options) {
       return Promise.reject({ msg: "请求失败", res, data });
 
     if ([410000, 410001, 410002].indexOf(data.status) !== -1) {
-      // toLogin();
+      
+      console.log("[410000, 410001, 410002].indexOf(data.status) !== -1");
       return Promise.reject({ msg: res.data.msg, res, data});
     } else if (data.status === 200) {
       return Promise.resolve(data, res);
     } else {
       return Promise.reject({ msg: res.data.msg, res, data });
-      // return Promise.reject(data);
+      
     }
   });
 }

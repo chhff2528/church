@@ -3,10 +3,10 @@
     <el-container>
       <el-main>
         <!-- 视频区域 -->
-        <div id="player_container" class="preach-content">
+        <div id="player_container" class="preach-content" >
         </div>
         <!-- 音频 -->
-        <div id="myAudioPlayer"></div>
+        <!-- <div id="myAudioPlayer"></div> -->
       </el-main>
       <el-aside class="recom-aside">
 
@@ -50,8 +50,12 @@
     props: {},
     data: function () {
       return {
+        id:'',
         timeList: []
       };
+    },
+    created:function(){
+      this.receiveId();
     },
     methods: {
       video: function () {
@@ -69,15 +73,11 @@
           wrap: '#myAudioPlayer',
           skin: 'white'
         });
-      },
-      all:function(){
-        var mode = player.getCurrentMode();
-        console.log(mode) // video/audio
       }
     },
     mounted: function () {
-      // this.video();
-      this.audio();
+      this.video();
+      // this.audio();
       let that = this;
       getHomeData()
         .then(res => {
@@ -96,20 +96,11 @@
     top: 1rem;
   }
 
-  /* .polyvFlashObject {
-    width: 10rem;
-    height: 6.67rem;
-  } */
-
   .recom-aside {
     background: #ffffff;
     width: 4rem !important;
     padding: 0.2rem;
   }
-
-  /* .card-box {
-    width: 3.2rem;
-  } */
 
   .card-box .title {
     margin-bottom: 0.1rem;

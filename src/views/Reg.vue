@@ -29,7 +29,9 @@
 
 
 <script>
-  import { getArticleBanner } from "@api/public";
+ import {
+    getData
+  } from "@api/public";
   export default {
     name: "Reg",
     data() {
@@ -82,17 +84,31 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            //校验通过
-            console.log(JSON.stringify(this.form));
-            //   //接口
-            let params = JSON.stringify(this.form);
+            // 校验通过～formParams为填写的信息;
+            let formParams=this.form;
+            let params = {
+              "jsonorder": {
+                "token": "3456dfklj3443ldsfd435",
+                "objectName": "dictionary",
+                "functionName": "insert",
+                "data": formParams,
+
+              }
+            };
             //getArticleBanner这是接口地址，参数params
-            getArticleBanner(params)
+            getData(params)
               .then(res => {
-                console.log(res);
+                if (res.status == 200) {
+                  this.$message({
+                    message: '恭喜你～，创建成功',
+                    type: 'success'
+                  });
+                } else {
+                  
+                }
               })
               .catch(function (error) {
-                console.log(error);
+               this.$message.error('Oops~，网络错误了，请刷新重试～');
               });
           } else {
             console.log('error submit!!');
