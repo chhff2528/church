@@ -1,13 +1,13 @@
 import request from "@utils/request";
 
 /**
- * 首页
+ * 查看详情
  * @returns {*}
  */
-export function getHomeData() {
-  return request.get("/receiever.php", {});
+export function getIPlayData(params) {
+  return request.get("/iplay.php", params);
 }
-// 日常借口
+// 日常+福音
 export function getData(params) {
   return request.get("/receiever.php", params);
 }

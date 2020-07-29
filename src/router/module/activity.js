@@ -5,56 +5,45 @@ export default [
   },
   {
     path: "/activity/fuyin",
-    name: "GoodsBargain",
+    name: "FuYin",
     meta: {
       title: "福音",
       keepAlive: false,
       isHeader: true,
       backgroundColor: "#fff"
     },
-    component: () => import("@views/activity/GoodsBargain.vue")
+    component: () => import("@views/activity/FuYin.vue")
   },
   {
     path: "/activity/everyday",
-    name: "GoodsGroup",
+    name: "EveryDay",
     meta: {
       title: "日常证道",
       keepAlive: false,
       isHeader: false,
       backgroundColor: "#fff"
     },
-    component: () => import("@views/activity/GoodsGroup.vue")
+    component: () => import("@views/activity/EveryDay.vue")
   },
   {
-    path: "/activity/audio/:id",
-    name: "GroupDetails",
+    path: "/activity/:id/:type?",
+    name: "PlayDetails",
     meta: {
-      title: "音频播放",
+      title: "详情播放",
       isHeader: true,
       keepAlive: false
     },
-    component: () => import("@views/activity/GroupDetails.vue")
+    component: () => import("@views/activity/PlayDetails.vue")
   },
   {
     path: "/activity/video",
-    name: "GoodsSeckill",
+    name: "Video",
     meta: {
       title: "视频播放",
       keepAlive: false,
       isHeader: true,
       backgroundColor: "#ffffff"
     },
-    component: () => import("@views/activity/GoodsSeckill.vue")
+    component: () => import("@views/activity/Video.vue")
   }
-  // ,
-  // {
-  //   path: "/reg",
-  //   name: "Reg",
-  //   meta: {
-  //     title: "注册",
-  //     keepAlive: false,
-  //     backgroundColor: "#ffffff"
-  //   },
-  //   component: () => import("@views/Reg.vue")
-  // }
 ];

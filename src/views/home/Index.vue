@@ -17,7 +17,7 @@
 </template>
 <script>
   import {
-    getHomeData
+    getData
   } from "@api/public";
 
   export default {
