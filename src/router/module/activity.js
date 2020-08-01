@@ -15,7 +15,7 @@ export default [
     component: () => import("@views/activity/FuYin.vue")
   },
   {
-    path: "/activity/live",
+    path: "/activity/Live",
     name: "Live",
     meta: {
       title: "日常证道",
