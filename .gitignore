@@ -1,11 +1,7 @@
-
 .vscode/settings.json
-
 /node_modules
 node_modules
 /build
 build
-
 .DS_Store
-
 npm-debug.log*
