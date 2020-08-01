@@ -23,14 +23,11 @@
         placeholder="请输入内容"
         @select="handleSelect"
       >
-        <i
-          class="el-icon-search el-input__icon church-search"
-          slot="suffix"
-          @click="handleIconClick"
-        >
-        </i>
         <template slot-scope="{ item }">
-          <div class="name">{{ item.value }}</div>
+          <a
+            :href="'/activity/' + item.ID + '/video'"
+          >
+          <div class="name">{{ item.Name}}</div></a>
         </template>
       </el-autocomplete>
       <!-- 搜索end -->
@@ -38,6 +35,7 @@
   </div>
 </template>
 <script>
+import { getData } from "@api/public";
 export default {
   name: "Header",
   props: {},
@@ -79,34 +77,33 @@ export default {
     createFilter(queryString) {
       return restaurant => {
         return (
-          restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) ===
+          restaurant.Name.toLowerCase().indexOf(queryString.toLowerCase()) ===
           0
         );
       };
     },
-    loadAll() {
-      return [
-        {
-          value: "三全鲜食（北新泾店）"
-        },
-        {
-          value: "Hot honey 首尔炸鸡（仙霞路）"
-        },
-        {
-          value: "新旺角茶餐厅"
-        }
-      ];
-    },
     handleSelect(item) {
       console.log(item);
-    },
-    handleIconClick(ev) {
-      console.log(ev);
     }
   },
-  mounted() {
-    this.restaurants = this.loadAll();
-  }
+   mounted: function() {
+    let that = this;
+    let params = {
+      jsonorder: {
+        token: "3456dfklj3443ldsfd435",
+        objectName: "video",
+        functionName: "getdata"
+      }
+    };
+    getData(params)
+      .then(res => {
+        console.log(res.status);
+        that.$set(that, "restaurants", res.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  },
 };
 </script>
 <style scoped>
