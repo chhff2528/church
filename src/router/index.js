@@ -32,6 +32,17 @@ const router = new Router({
       component: Loading
     },
     {
+      path: "/userlist",
+      name: "UserList",
+      meta: {
+        title: "信息管理",
+        keepAlive: false,
+        backgroundColor: "#ffffff",
+        isHeader: false
+      },
+      component: () => import("@views/UserList.vue")
+    },
+    {
       path: "/reg",
       name: "Reg",
       meta: {
