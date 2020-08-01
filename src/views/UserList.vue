@@ -1,6 +1,6 @@
 <template>
     <div class="user-wrap">
-        <UserForm></UserForm>
+        <UserForm v-show="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getDate"></UserForm>
         <el-table :data="tableData" stripe height="500" style="width: 100%">
             <el-table-column prop="SourceFilesCreateTime" label="日期" width="180" align="center">
             </el-table-column>
@@ -10,10 +10,10 @@
             </el-table-column>
             <el-table-column align="right">
                 <template slot="header">
-                    <el-button size="mini" type="primary" @click="handleEdit(scope.$index, scope.row)">新建</el-button>
+                    <el-button size="mini" type="primary" @click="addOrUpdateHandle(0)">新建</el-button>
                 </template>
                 <template slot-scope="scope">
-                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                    <el-button size="mini" @click="addOrUpdateHandle(scope.row)">编辑</el-button>
                     <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -34,6 +34,7 @@
         data() {
             return {
                 tableData: [],
+                addOrUpdateVisible:false
             }
         },
         mounted: function () {
@@ -54,8 +55,9 @@
                 });
         },
         methods: {
-            handleEdit(index, row) {
-                console.log(index, row);
+            addOrUpdateHandle(row) {
+                this.addOrUpdateVisible =true;
+                this.$refs.addOrUpdate.init(row);
             },
             handleDelete(index, row) {
                 console.log(index, row);
