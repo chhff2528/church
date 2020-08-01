@@ -1,6 +1,6 @@
 export default [
   {
-    path: "/activity",
+    path: "/activity"
     // component: () => import("@views/home/index.vue")
   },
   {
@@ -15,25 +15,25 @@ export default [
     component: () => import("@views/activity/FuYin.vue")
   },
   {
-    path: "/activity/everyday",
-    name: "EveryDay",
+    path: "/activity/live",
+    name: "Live",
     meta: {
       title: "日常证道",
       keepAlive: false,
       isHeader: false,
       backgroundColor: "#fff"
     },
-    component: () => import("@views/activity/EveryDay.vue")
+    component: () => import("@views/activity/Live.vue")
   },
   {
     path: "/activity/:id/:type?",
-    name: "PlayDetails",
+    name: "PlayDetails",
     meta: {
       title: "详情播放",
       isHeader: true,
       keepAlive: false
     },
-    component: () => import("@views/activity/PlayDetails.vue")
+    component: () => import("@views/activity/PlayDetails.vue")
   },
   {
     path: "/activity/video",

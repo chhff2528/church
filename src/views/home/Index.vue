@@ -1,51 +1,67 @@
 <template>
   <div class="index">
-    <object type="application/x-shockwave-flash" data="http://player.polyv.net/live/player.swf" id="234028" width="100%"
-      height="200" class="polyvFlashObject">
-      <param name="allowScriptAccess" value="always">
-      <param name="allowFullScreen" value="true">
-      <param name="quality" value="high">
-      <param name="bgcolor" value="#ffffff">
-      <param name="wmode" value="transparent">
-      <param name="flashvars"
-        value="is_barrage=on&amp;VolumeM=0&amp;vid=234028&amp;uid=e405i666d0&amp;useFastDns=off&amp;"></object>
-    <!-- <iframe id="entry" src="polyv 提供的网址" frameborder="0" allowfullscreen="true"
-      allow="microphone; camera">
-
-    </iframe> -->
+    <div class="nav clearfix">
+      <div
+        class="item"
+        v-for="(item, index) in menus"
+        :key="index"
+        @click="goDetail(item)"
+      >
+        <div class="pictrue ">
+          <img :src="item.pictureURL" />
+          <div class="title">{{ item.Name }}</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-  import {
-    getData
-  } from "@api/public";
-
-  export default {
-    name: "Index",
-    components: {
-
-    },
-
-    data: function () {
-      return {
-        menus: []
-      };
-    },
-    // mounted: function() {
-    //   let that = this;
-    //   getHomeData().then(res => {
-    //     that.$set(that, "menus", res.data);     
-    //   }).catch(function(error){
-    // 				console.log(error);
-    // 			});;
-    // }
-  };
+import { getData } from "@api/public";
+export default {
+  name: "Richang",
+  data: function() {
+    return {
+      menus: []
+    };
+  },
+  mounted: function() {
+    let that = this;
+    let params = {
+      jsonorder: {
+        token: "3456dfklj3443ldsfd435",
+        objectName: "video",
+        functionName: "getdata"
+      }
+    };
+    getData(params)
+      .then(res => {
+        console.log(res.status);
+        that.$set(that, "menus", res.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  },
+  methods: {
+    // 跳转
+    goDetail(item) {
+      if (item.ID) {
+        this.$router.push({
+          path: "/activity/" + item.ID + "/video"
+        });
+      } else {
+        this.$message({
+          showClose: true,
+          message: "获取视频资源错误啦～～，请刷新重试！",
+          type: "error"
+        });
+      }
+    }
+  }
+};
 </script>
 <style scoped>
-  [v-cloak] {
-    display: none;
-  }
-  .index{
-    margin-top: 1.2rem;
-  }
+[v-cloak] {
+  display: none;
+}
 </style>
