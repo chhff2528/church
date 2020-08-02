@@ -1,12 +1,45 @@
 <template>
   <el-dialog :title="!form.id ?'新建' :'编辑' " :visible.sync="visible">
-      <el-form ref="form" :model="form" :rules="rules" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="名称" prop="Name">
-          <el-input v-model="form.name"></el-input>
-        </el-form-item>
-        <el-form-item label="CategoryTitle" prop="CategoryTitle">
-          <el-input v-model="form.CategoryTitle" clearable></el-input>
-        </el-form-item>
+      <el-form ref="form" :model="form" :rules="rules" label-width="150px" class="demo-ruleForm">
+        <el-form-item label="资源文件日期" prop="sourcefilescreatetime">
+        <el-input v-model="form.sourcefilescreatetime"></el-input>
+      </el-form-item>
+      <!-- <el-form-item label="人员姓名" prop="personname">
+        <el-input v-model="form.personname"></el-input>
+      </el-form-item> -->
+       <el-form-item label="分类标题" prop="categorytitle">
+        <el-input v-model="form.categorytitle"></el-input>
+      </el-form-item>
+      <el-form-item label="视频名称" prop="name">
+        <el-input v-model="form.name" clearable></el-input>
+      </el-form-item>
+       <el-form-item label="日期标题" prop="datetitle">
+        <el-input v-model="form.datetitle"></el-input>
+      </el-form-item>
+      <el-form-item label="日常证道" prop="dailycategory">
+        <el-select v-model="form.dailycategory" placeholder="请选是否为日常证道">
+          <el-option label="是" value="1"></el-option>
+          <el-option label="否" value="0"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="查经证道" prop="biblecategory">
+        <el-select v-model="form.biblecategory" placeholder="请选是否为查经证道">
+          <el-option label="是" value="1"></el-option>
+          <el-option label="否" value="0"></el-option>
+        </el-select>
+      </el-form-item>
+       <el-form-item label="福音证道" prop="gospelcategory">
+        <el-select v-model="form.gospelcategory" placeholder="请选是否为福音证道">
+          <el-option label="是" value="1"></el-option>
+          <el-option label="否" value="0"></el-option>
+        </el-select>
+      </el-form-item>
+      <!-- <el-form-item label="活动时间" prop="data">
+        <el-date-picker v-model="form.data" type="date" placeholder="选择日期"></el-date-picker>
+      </el-form-item>
+      <el-form-item label="活动形式" prop="desc">
+        <el-input type="textarea" v-model="form.desc" placeholder="填写描述"></el-input>
+      </el-form-item> -->
         <el-form-item>
           <el-button type="primary" @click="submitForm('form')">保存</el-button>
         </el-form-item>
@@ -25,26 +58,60 @@
       return {
         visible:false,
         form: {
-          Name: "",
-          CategoryTitle: ""
+          sourcefilescreatetime:"",
+          personname: "",
+          categorytitle:"",
+          name:"",
+          datetitle:"",
+          dailycategory: "",
+          biblecategory:"",
+          gospelcategory:""
         },
         rules: {
-          Name: [{
+          sourcefilescreatetime: [{
               required: true,
-              message: '请输入活动名称',
+              message: '请输入资源文件日期',
               trigger: 'blur'
-            },
-            {
-              min: 1,
-              max: 10,
-              message: '长度在 1 到 10 个字符',
+            }],
+          // personname: [{
+          //     required: true,
+          //     message: '请输入人员姓名',
+          //     trigger: 'blur'
+          //   }],
+          categorytitle: [{
+              required: true,
+              message: '请输入分类标题',
               trigger: 'blur'
-            }
-          ],
-          address: [{
+            }],
+          name: [{
+              required: true,
+              message: '请输入视频名称',
+              trigger: 'blur'
+            }],
+          datetitle: [{
+              required: true,
+              message: '请输入日期标题',
+              trigger: 'blur'
+            }],
+          dailycategory: [{
             required: true,
-            CategoryTitle: '请输入地址',
+            message: '请选是否为日常证道',
             trigger: 'blur'
+          }],
+          biblecategory: [{
+            required: true,
+            message: '请选是否为查经证道',
+            trigger: 'blur'
+          }],
+          gospelcategory: [{
+            required: true,
+            message: '请选是否为福音证道',
+            trigger: 'blur'
+          }],
+          region: [{
+            required: true,
+            message: '请选择活动区域',
+            trigger: 'change'
           }]
         }
       };
@@ -54,12 +121,18 @@
         this.form.id=row.ID;
         this.visible=true;
         this.$nextTick(()=>{
+          this.form.sourcefilescreatetime=row.SourceFilesCreateTime;
           this.form.name=row.Name;
-          this.form.CategoryTitle=row.CategoryTitle;
+          this.form.categorytitle=row.CategoryTitle;
+          this.form.personname=row.PersoNname;
+          this.form.datetitle=row.DateTitle;
+          this.form.dailycategory=row.DailyCategory;
+          this.form.biblecategory=row.BibleCategory;
+          this.form.gospelcategory=row.GospelCategory;
         })
       },
-      onSubmit(formName) {
-        this.$refs[formName].validate((valid) => {
+      submitForm(form) {
+        this.$refs[form].validate((valid) => {
           if (valid) {
             // 校验通过～formParams为填写的信息;
             let formParams = this.form;
@@ -67,9 +140,8 @@
               "jsonorder": {
                 "token": "3456dfklj3443ldsfd435",
                 "objectName": "dictionary",
-                "functionName": "insert",
+                "functionName": this.form.id ?"update" : "insert",
                 "data": formParams,
-
               }
             };
             //getArticleBanner这是接口地址，参数params
@@ -80,6 +152,7 @@
                     message: '恭喜你～，创建成功',
                     type: 'success'
                   });
+                   window.location.reload();
                 } else {
 
                 }
