@@ -2,7 +2,6 @@
   var docEl = document.documentElement || document.body;
   var dpr = window.devicePixelRatio || 1;
 
-  // adjust body font size
   function setBodyFontSize() {
     if (document.body) {
     } else {
@@ -13,9 +12,8 @@
 
   // set 1rem = viewWidth / 10
   function setRemUnit() {
-    // var rem = docEl.clientWidth / 7.5;
     if(docEl.clientWidth > 800){
-      var rem = docEl.clientWidth / 19.2;
+      var rem = 100;
     }
     else{
       var rem = docEl.clientWidth / 7.5;

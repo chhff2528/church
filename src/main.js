@@ -12,7 +12,6 @@ import "@assets/iconfont/iconfont.css";
 // import "@assets/js/media_750";
 import "vue-ydui/dist/ydui.base.css";
 import "@assets/css/base.css";
-import "@assets/css/reset.css";
 import "@assets/css/style.css";
 
 Vue.use(animate);

@@ -28,7 +28,4 @@ export default {
   display: none;
 }
 
-.index {
-  margin-top: 1.2rem;
-}
 </style>

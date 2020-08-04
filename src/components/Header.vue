@@ -106,14 +106,67 @@ export default {
 };
 </script>
 <style scoped>
+/* 头部 */
+.header {
+    position: fixed;
+    width: 100%;
+    height: 0.6rem;
+    top: 0;
+    left: 0;
+    background-color: #22222e;
+    z-index: 22;
+}
+.pdt{
+    padding-top: 0.8rem;
+}
+.header .container {
+    width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    
+}
+.header .logo{
+    display: inline-block;
+    margin-top: 5px;
+    width: 0.36rem;
+    height: 0.51rem;
+}
+
+.header .nav{
+    margin-left:0.2rem;
+}
+.header .item {
+    position: relative;
+    display: inline-block;
+    font-size: 0.18rem;
+    color: #fff;
+    -webkit-transition: .2s color;
+    transition: .2s color;
+    padding: 0.03rem;
+    margin: 0.16rem 0.3rem;
+}
+
+.header .item.on::before,
+.header .item:hover::before{
+    position: absolute;
+    background: #8784c7;
+    content: '';
+    width: 0.3rem;
+    height: 0.03rem;
+    bottom: 0rem;
+    left: 50%;
+    border-radius: 0.03rem;
+    transform: translateX(-50%);
+}
+
 .el-autocomplete {
-  top: 10px;
-  right: 20px;
+  top: 0.1rem;
+  right: 0.2rem;
 }
 
 .my-autocomplete li {
   line-height: normal;
-  padding: 7px;
+  padding: 0.07rem;
 }
 
 .my-autocomplete .name {
@@ -123,7 +176,7 @@ export default {
 }
 
 .my-autocomplete .addr {
-  font-size: 14px;
+  font-size: 0.16rem;
   color: #b4b4b4;
 }
 

@@ -112,8 +112,6 @@ export default {
 }
 
 .main {
-  /* position:absolute;
-  right: 370px; */
   width: calc(100vw - 350px);
   height: calc(100vh - 140px);
   text-align: center;
