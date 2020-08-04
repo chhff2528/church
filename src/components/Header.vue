@@ -17,6 +17,7 @@
       </div>
       <!-- 搜索 -->
       <el-autocomplete
+        class="fr"
         popper-class="my-autocomplete"
         v-model="state"
         :fetch-suggestions="querySearch"
@@ -24,10 +25,9 @@
         @select="handleSelect"
       >
         <template slot-scope="{ item }">
-          <a
-            :href="'/activity/' + item.ID + '/video'"
+          <a :href="'/activity/' + item.ID + '/video'">
+            <div class="name">{{ item.Name }}</div></a
           >
-          <div class="name">{{ item.Name}}</div></a>
         </template>
       </el-autocomplete>
       <!-- 搜索end -->
@@ -77,8 +77,7 @@ export default {
     createFilter(queryString) {
       return restaurant => {
         return (
-          restaurant.Name.toLowerCase().indexOf(queryString.toLowerCase()) ===
-          0
+          restaurant.Name.toLowerCase().indexOf(queryString.toLowerCase()) === 0
         );
       };
     },
@@ -86,7 +85,7 @@ export default {
       console.log(item);
     }
   },
-   mounted: function() {
+  mounted: function() {
     let that = this;
     let params = {
       jsonorder: {
@@ -103,13 +102,13 @@ export default {
       .catch(function(error) {
         console.log(error);
       });
-  },
+  }
 };
 </script>
 <style scoped>
 .el-autocomplete {
-  top: 0.2rem;
-  left: 0.4rem;
+  top: 10px;
+  right: 20px;
 }
 
 .my-autocomplete li {
@@ -120,10 +119,11 @@ export default {
 .my-autocomplete .name {
   text-overflow: ellipsis;
   overflow: hidden;
+  color: black;
 }
 
 .my-autocomplete .addr {
-  font-size: 12px;
+  font-size: 14px;
   color: #b4b4b4;
 }
 

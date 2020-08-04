@@ -1,16 +1,15 @@
 import Vue from "vue";
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 import App from "./App.vue";
 import store from "./store";
 import router from "./router";
 import animate from "animate.css";
 import $ from "jquery";
 
-
 import "@assets/iconfont/iconfont";
 import "@assets/iconfont/iconfont.css";
-import "@assets/js/media_750";
+// import "@assets/js/media_750";
 import "vue-ydui/dist/ydui.base.css";
 import "@assets/css/base.css";
 import "@assets/css/reset.css";
@@ -20,7 +19,6 @@ Vue.use(animate);
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 Vue.config.devtools = process.env.NODE_ENV !== "production";
-
 
 const $vm = new Vue({
   router,

@@ -2,7 +2,7 @@
   <div class="index">
     <div class="nav clearfix">
       <div
-        class="item"
+        class="item w25"
         v-for="(item, index) in menus"
         :key="index"
         @click="goDetail(item)"

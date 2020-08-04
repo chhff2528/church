@@ -1,41 +1,39 @@
 <template>
   <div class="preach-wrap" ref="container">
-    <el-container>
-      <el-main>
-        <!-- 音频区域 -->
-        <div id="myAudioPlayer" v-if="type == 'audio'"></div>
-        <!-- 视频区域 -->
-        <div id="player_container" class="preach-content" v-else></div>
-        <!-- 切换按钮 -->
-        <el-row class="btn-wrap">
-          <a
-            :href="'/activity/' + $route.params.id + '/video'"
-            v-if="type == 'audio'"
-          >
-            <el-button type="primary" round>切换视频</el-button>
+    <div class="main">
+      <!-- 音频区域 -->
+      <div id="myAudioPlayer" v-if="type == 'audio'"></div>
+      <!-- 视频区域 -->
+      <div id="player_container" class="preach-content" v-else></div>
+      <!-- 切换按钮 -->
+      <el-row class="btn-wrap">
+        <a
+          :href="'/activity/' + $route.params.id + '/video'"
+          v-if="type == 'audio'"
+        >
+          <el-button type="primary" round>切换视频</el-button>
+        </a>
+        <a :href="'/activity/' + $route.params.id + '/audio'" v-else>
+          <el-button type="primary" round>切换MP3</el-button>
+        </a>
+      </el-row>
+    </div>
+    <el-aside class="recom-aside">
+      <el-timeline>
+        <el-timeline-item v-for="(item, index) in timeList" :key="index">
+          <a :href="'/activity/' + item.ID + '/video'">
+            <el-card class="card-box">
+              <h4 class="title">{{ item.Name }}</h4>
+              <el-image
+                style="width: 100%; height: 100px"
+                :src="item.pictureURL"
+                :fit="fit"
+              ></el-image>
+            </el-card>
           </a>
-          <a :href="'/activity/' + $route.params.id + '/audio'" v-else>
-            <el-button type="primary" round>切换MP3</el-button>
-          </a>
-        </el-row>
-      </el-main>
-      <el-aside class="recom-aside">
-        <el-timeline>
-          <el-timeline-item v-for="(item, index) in timeList" :key="index">
-            <a :href="'/activity/' + item.ID + '/video'">
-              <el-card class="card-box">
-                <h4 class="title">{{ item.Name }}</h4>
-                <el-image
-                  style="width: 100%; height: 100px"
-                  :src="item.pictureURL"
-                  :fit="fit"
-                ></el-image>
-              </el-card>
-            </a>
-          </el-timeline-item>
-        </el-timeline>
-      </el-aside>
-    </el-container>
+        </el-timeline-item>
+      </el-timeline>
+    </el-aside>
   </div>
 </template>
 <script>
@@ -89,14 +87,19 @@ export default {
 </script>
 <style scoped>
 .preach-wrap {
-  position: relative;
-  top: 1rem;
+  position: fixed;
+  width: 100vw;
+  display: block;
+  height: 100%;
 }
 
 .recom-aside {
   background: #ffffff;
-  width: 4rem !important;
-  padding: 0.2rem;
+  /* width: 4rem !important; */
+  height: calc(100vh - 100px);
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .card-box .title {
@@ -108,9 +111,18 @@ export default {
   margin: 30px auto;
 }
 
-.preach-content,
+.main {
+  /* position:absolute;
+  right: 370px; */
+  width: calc(100vw - 350px);
+  height: calc(100vh - 140px);
+  text-align: center;
+}
 .btn-wrap {
-  width: 800px;
-  margin: 0 auto 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.preach-content {
+  display: inline-block;
 }
 </style>

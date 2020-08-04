@@ -1,9 +1,10 @@
 <template>
   <div>
-    <Header v-if=" isHeader === ture" ></Header>
+    <Header v-if="isHeader === ture"></Header>
+    <div class="pdt"></div>
     <div class="app" v-cloak>
-      <keep-alive :include="include" >
-        <router-view  ref="router"></router-view>
+      <keep-alive :include="include">
+        <router-view ref="router"></router-view>
       </keep-alive>
     </div>
   </div>
@@ -19,8 +20,7 @@ export default {
   data() {
     return {
       transitionName: "fold-right",
-      include: isKeepAlive(this.$route) ? [this.$route.name] : [],
-     
+      include: isKeepAlive(this.$route) ? [this.$route.name] : []
     };
   },
   // computed: mapGetters(["isHeader"]),
