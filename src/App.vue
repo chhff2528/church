@@ -31,31 +31,7 @@ export default {
   },
   components: {
     Header
-  },
-   watch: {
-    $route(to, from) {
-      const lastPath = this.history[this.history.length - 1] || {},
-        { isReplace, isBack } = this.$router;
-
-      if (lastPath.path === to.path) {
-        this.transitionName = "fold-right";
-        this.history.pop();
-      } else {
-        this.transitionName = "fold-left";
-        if (!isReplace) this.history.push({ path: from.path, name: from.name });
-      }
-
-      if (isKeepAlive(from) && isBack) {
-        var index = this.include.indexOf(from.name);
-        index !== -1 && this.include.splice(index, 1);
-      }
-
-      this.$router.isBack = false;
-      this.$router.isReplace = false;
-
-      console.log(this.transitionName, "change");
-    }
-   }
+  }
 }
 </script>
 <style lang="scss">
