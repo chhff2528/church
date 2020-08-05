@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="app-wrap">
     <Header v-if="isHeader === ture"></Header>
     <div class="pdt"></div>
-    <div class="app" v-cloak>
+    <div class="app-container" v-cloak>
       <keep-alive :include="include">
         <router-view ref="router"></router-view>
       </keep-alive>

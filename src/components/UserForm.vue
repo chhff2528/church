@@ -149,10 +149,10 @@
               .then(res => {
                 if (res.status == 200) {
                   this.$message({
-                    message: '恭喜你～，创建成功',
+                    message: '恭喜你～，成功啦',
                     type: 'success'
                   });
-                   window.location.reload();
+                  //  window.location.reload();
                 } else {
 
                 }

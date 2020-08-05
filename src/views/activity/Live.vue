@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index-live">
     <div id="player"></div>
   </div>
 </template>
@@ -9,10 +9,9 @@ export default {
     return {};
   },
   mounted: function() {
-   var playerLive = polyvObject("#player").livePlayer({
-     
-      width: "800px",
-      height: "533px",
+   var playerLive = polyvObject("#player").livePlayer({  
+      width: "100%",
+      height: "100%",
       flashvars: {
         is_barrage: "on",
         VolumeM: "0"
@@ -26,6 +25,10 @@ export default {
 <style scoped>
 [v-cloak] {
   display: none;
+}
+#player{
+   width: 100%; 
+   height: 100%;
 }
 
 </style>
