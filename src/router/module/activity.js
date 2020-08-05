@@ -34,16 +34,5 @@ export default [
       keepAlive: false
     },
     component: () => import("@views/activity/PlayDetails.vue")
-  },
-  {
-    path: "/activity/video",
-    name: "Video",
-    meta: {
-      title: "视频播放",
-      keepAlive: false,
-      isHeader: true,
-      backgroundColor: "#ffffff"
-    },
-    component: () => import("@views/activity/Video.vue")
   }
 ];
