@@ -93,7 +93,7 @@
     height: calc(100vh - 100px);
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 1rem;
   }
 
   .card-box .title {
@@ -118,6 +118,13 @@
 
   .preach-content {
     display: inline-block;
+  }
+
+  @media screen and (min-width: 767px) {
+    .preach-content {
+      width: 800px;
+      height: 533px;
+    }
   }
 
   @media screen and (max-width: 640px) {

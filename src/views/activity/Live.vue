@@ -4,31 +4,33 @@
   </div>
 </template>
 <script>
-export default {
-  data: function() {
-    return {};
-  },
-  mounted: function() {
-   var playerLive = polyvObject("#player").livePlayer({  
-      width: "100%",
-      height: "100%",
-      flashvars: {
-        is_barrage: "on",
-        VolumeM: "0"
-      },
-      uid: "e405i666d0",
-      vid: "234028"
-    });
-  }
-};
+  export default {
+    data: function () {
+      return {};
+    },
+    mounted: function () {
+      var playerLive = polyvObject("#player").livePlayer({
+        width: "100%",
+        height: "100%",
+        flashvars: {
+          is_barrage: "on",
+          VolumeM: "0"
+        },
+        uid: "e405i666d0",
+        vid: "234028"
+      });
+    }
+  };
 </script>
 <style scoped>
-[v-cloak] {
-  display: none;
-}
-#player{
-   width: 100%; 
-   height: 100%;
-}
+  [v-cloak] {
+    display: none;
+  }
 
+  #player {
+    width: 100%;
+    height: 100%;
+    max-width: 10.8rem;
+    margin: 0 auto;
+  }
 </style>
