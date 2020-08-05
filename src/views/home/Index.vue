@@ -8,7 +8,7 @@
         @click="goDetail(item)"
       >
         <div class="pictrue ">
-          <img :src="item.pictureURL" />
+          <img :src="item.PictureURL" />
           <div class="title">{{ item.Name }}</div>
         </div>
       </div>

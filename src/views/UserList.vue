@@ -92,6 +92,7 @@ export default {
             message: "恭喜你～，删除成功",
             type: "success"
           });
+          window.location.reload();
         })
         .catch(function(error) {
           this.$message.error("Oops~，网络错误了，请刷新重试～");

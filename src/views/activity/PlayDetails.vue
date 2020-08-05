@@ -21,7 +21,7 @@
           <a :href="'/activity/' + item.ID + '/video'">
             <el-card class="card-box">
               <h4 class="title">{{ item.Name }}</h4>
-              <el-image style="width: 100%; height: 100px" :src="item.pictureURL" :fit="fit"></el-image>
+              <el-image style="width: 100%; height: 100px" :src="item.PictureURL" :fit="fit"></el-image>
             </el-card>
           </a>
         </el-timeline-item>

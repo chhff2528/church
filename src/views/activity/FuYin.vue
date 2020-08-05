@@ -3,7 +3,7 @@
     <div class="nav clearfix" v-if="this.menus.length ">
       <router-link :to="item.wap_url ? item.wap_url : ''" class="item" target="_blank" v-for="(item, index) in menus"
         :key="index">
-        <div class="pictrue "><img :src="item.pictureURL" />
+        <div class="pictrue "><img :src="item.PictureURL" />
           <div class="title">{{ item.Name }}</div>
         </div>
       </router-link>
