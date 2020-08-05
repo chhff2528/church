@@ -134,6 +134,14 @@
       position: relative;
     }
 
+    #myAudioPlayer {
+      width: 100%;
+      background: #fff;
+      height: calc(100vh - 3.6rem);
+      margin: 0 auto;
+      padding: 1.3rem 0.2rem 0;
+    }
+
     .preach-content {
       width: 100%;
       height: calc(100vh - 3.6rem);

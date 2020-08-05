@@ -32,15 +32,31 @@ export default {
   components: {
     Header
   },
-   mounted() {
-    window.addEventListener('hashchange', (e) => {
-      var currentPath = window.location.hash.slice(1); // 获取输入的路由
-      if (this.$router.path !== currentPath) {
-        this.$router.push(currentPath); // 动态跳转
+   watch: {
+    $route(to, from) {
+      const lastPath = this.history[this.history.length - 1] || {},
+        { isReplace, isBack } = this.$router;
+
+      if (lastPath.path === to.path) {
+        this.transitionName = "fold-right";
+        this.history.pop();
+      } else {
+        this.transitionName = "fold-left";
+        if (!isReplace) this.history.push({ path: from.path, name: from.name });
       }
-    }, false);
-  }
-};
+
+      if (isKeepAlive(from) && isBack) {
+        var index = this.include.indexOf(from.name);
+        index !== -1 && this.include.splice(index, 1);
+      }
+
+      this.$router.isBack = false;
+      this.$router.isReplace = false;
+
+      console.log(this.transitionName, "change");
+    }
+   }
+}
 </script>
 <style lang="scss">
 [v-cloak] {
