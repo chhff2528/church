@@ -106,28 +106,29 @@
   }
 
   .main {
-    width: calc(100vw - 350px);
-    height: calc(100vh - 140px);
+    width: calc(100vw - 470px);
+    height: calc(100vh - 180px);
     text-align: center;
   }
 
   .btn-wrap {
-    margin-top: 20px;
-    margin-bottom: 40px;
+    display: inline-block;
+    margin: 20px auto;
   }
 
   .preach-content {
     display: inline-block;
   }
 
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: 769px) {
     .preach-content {
-      width: 800px;
-      height: 533px;
+      width:100%;
+      height: 100%;
+      margin-left: 120px;
     }
   }
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 768px) {
     .main {
       width: 100%;
       height: calc(100vh - 3rem);
@@ -148,6 +149,7 @@
     }
 
     .btn-wrap {
+      display: block;
       position: absolute;
       bottom: 0;
       margin: 0.1rem;
