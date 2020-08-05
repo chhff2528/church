@@ -1,12 +1,17 @@
 <template>
   <div class="index">
     <div class="nav clearfix" v-if="this.menus.length ">
-      <router-link :to="item.wap_url ? item.wap_url : ''" class="item" target="_blank" v-for="(item, index) in menus"
-        :key="index">
-        <div class="pictrue "><img :src="item.PictureURL" />
+      <div
+        class="item"
+        v-for="(item, index) in menus"
+        :key="index"
+        @click="goDetail(item)"
+      >
+        <div class="pictrue ">
+          <img :src="item.PictureURL" />
           <div class="title">{{ item.Name }}</div>
         </div>
-      </router-link>
+      </div>
     </div>
     <div class="nav" v-else>
       什么也没有发现～
@@ -18,7 +23,7 @@
     getData
   } from "@api/public";
   export default {
-    name: "Richang",
+    name: "FuYin",
     data: function () {
       return {
         menus: []
@@ -29,13 +34,31 @@
       let params = {
         "jsonorder": {"token":"3456dfklj3443ldsfd435","objectName":"video","functionName":"GetFuyinData"} 
       };
-      getData(params).then(res => {
+     getData(params)
+      .then(res => {
         console.log(res.status);
         that.$set(that, "menus", res.data);
-      }).catch(function (error) {
+      })
+      .catch(function(error) {
         console.log(error);
-      });;
+      });
+    },
+    methods: {
+    // 跳转
+    goDetail(item) {
+      if (item.ID) {
+        this.$router.push({
+          path: "/activity/" + item.ID + "/video"
+        });
+      } else {
+        this.$message({
+          showClose: true,
+          message: "获取视频资源错误啦～～，请刷新重试！",
+          type: "error"
+        });
+      }
     }
+  }
   };
 </script>
 <style scoped>
