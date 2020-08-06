@@ -4,9 +4,9 @@
         <el-form-item label="资源文件日期" prop="sourcefilescreatetime">
         <el-input v-model="form.sourcefilescreatetime"></el-input>
       </el-form-item>
-      <!-- <el-form-item label="人员姓名" prop="personname">
+     <el-form-item label="人员姓名" prop="personname">
         <el-input v-model="form.personname"></el-input>
-      </el-form-item> -->
+      </el-form-item>
        <el-form-item label="分类标题" prop="categorytitle">
         <el-input v-model="form.categorytitle"></el-input>
       </el-form-item>
@@ -34,12 +34,6 @@
           <el-option label="否" value="0"></el-option>
         </el-select>
       </el-form-item>
-      <!-- <el-form-item label="活动时间" prop="data">
-        <el-date-picker v-model="form.data" type="date" placeholder="选择日期"></el-date-picker>
-      </el-form-item>
-      <el-form-item label="活动形式" prop="desc">
-        <el-input type="textarea" v-model="form.desc" placeholder="填写描述"></el-input>
-      </el-form-item> -->
         <el-form-item>
           <el-button type="primary" @click="submitForm('form')">保存</el-button>
         </el-form-item>
@@ -73,11 +67,11 @@
               message: '请输入资源文件日期',
               trigger: 'blur'
             }],
-          // personname: [{
-          //     required: true,
-          //     message: '请输入人员姓名',
-          //     trigger: 'blur'
-          //   }],
+         personname: [{
+              required: true,
+              message: '请输入人员姓名',
+              trigger: 'blur'
+            }],
           categorytitle: [{
               required: true,
               message: '请输入分类标题',
@@ -107,11 +101,6 @@
             required: true,
             message: '请选是否为福音证道',
             trigger: 'blur'
-          }],
-          region: [{
-            required: true,
-            message: '请选择活动区域',
-            trigger: 'change'
           }]
         }
       };
@@ -121,14 +110,15 @@
         this.form.id=row.ID;
         this.visible=true;
         this.$nextTick(()=>{
-          this.form.sourcefilescreatetime=row.SourceFilesCreateTime;
+          this.form.sourcefilescreatetime=row.SourceFilesCreateTime;         
+          this.form.personname=row.PersonName;
           this.form.name=row.Name;
           this.form.categorytitle=row.CategoryTitle;
-          this.form.personname=row.PersoNname;
           this.form.datetitle=row.DateTitle;
           this.form.dailycategory=row.DailyCategory;
           this.form.biblecategory=row.BibleCategory;
           this.form.gospelcategory=row.GospelCategory;
+          this.form.id=row.ID;
         })
       },
       submitForm(form) {
@@ -153,9 +143,7 @@
                     type: 'success'
                   });
                    window.location.reload();
-                } else {
-
-                }
+                } 
               })
               .catch(function (error) {
                 this.$message.error('Oops~，网络错误了，请刷新重试～');

@@ -26,7 +26,10 @@
   [v-cloak] {
     display: none;
   }
-
+.index-live{
+  width: 100%;
+  height: 100%;
+}
   #player {
     width: 100%;
     height: 100%;

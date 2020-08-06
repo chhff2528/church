@@ -6,7 +6,17 @@
       <!-- 视频区域 -->
       <div id="player_container" class="preach-content" v-else></div>
       <!-- 切换按钮 -->
-      <el-row class="btn-wrap">
+      <!-- <el-row class="btn-wrap pc">
+        <a :href="'/activity/' + $route.params.id + '/video'" v-if="type == 'audio'">
+          <el-button type="primary" round>切换视频</el-button>
+        </a>
+        <a :href="'/activity/' + $route.params.id + '/audio'" v-else>
+          <el-button type="primary" round>切换MP3</el-button>
+        </a>
+      </el-row> -->
+    </div>
+    <!-- 切换按钮 -->
+     <el-row class="btn-wrap mobile">
         <a :href="'/activity/' + $route.params.id + '/video'" v-if="type == 'audio'">
           <el-button type="primary" round>切换视频</el-button>
         </a>
@@ -14,7 +24,6 @@
           <el-button type="primary" round>切换MP3</el-button>
         </a>
       </el-row>
-    </div>
     <el-aside class="recom-aside">
       <el-timeline>
         <el-timeline-item v-for="(item, index) in timeList" :key="index">
@@ -129,38 +138,46 @@
   }
 
   @media screen and (max-width: 768px) {
+    body{
+      overflow-y: hidden;
+    }
     .main {
       width: 100%;
-      height: calc(100vh - 3rem);
+      /* height: calc(100% - 4rem); */
+      height: 1.8rem;
       position: relative;
+      z-index: 100;
     }
 
     #myAudioPlayer {
       width: 100%;
       background: #fff;
-      height: calc(100vh - 3.6rem);
+      height: 100%;
       margin: 0 auto;
-      padding: 1.3rem 0.2rem 0;
+      padding: 0.5rem 0.2rem 0;
     }
 
     .preach-content {
       width: 100%;
-      height: calc(100vh - 3.6rem);
+      height: 100%;
     }
 
     .btn-wrap {
       display: block;
       position: absolute;
-      bottom: 0;
+      top: 1.8rem;
+      z-index: 999;
       margin: 0.1rem;
     }
 
     .recom-aside {
-      height: 3rem;
+      height:calc(100% - 2.4rem);
       position: absolute;
       right: 0;
       bottom: 0;
-      width: 100vw !important;
+      width: 100% !important;
+      padding: 0.2rem 0.4rem 0.2rem 0.2rem;
+      overflow-y: auto;
     }
   }
 </style>
