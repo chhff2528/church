@@ -5,15 +5,6 @@
       <div id="myAudioPlayer" v-if="type == 'audio'"></div>
       <!-- 视频区域 -->
       <div id="player_container" class="preach-content" v-else></div>
-      <!-- 切换按钮 -->
-      <!-- <el-row class="btn-wrap pc">
-        <a :href="'/activity/' + $route.params.id + '/video'" v-if="type == 'audio'">
-          <el-button type="primary" round>切换视频</el-button>
-        </a>
-        <a :href="'/activity/' + $route.params.id + '/audio'" v-else>
-          <el-button type="primary" round>切换MP3</el-button>
-        </a>
-      </el-row> -->
     </div>
     <!-- 切换按钮 -->
      <el-row class="btn-wrap mobile">
@@ -24,18 +15,12 @@
           <el-button type="primary" round>切换MP3</el-button>
         </a>
       </el-row>
-    <el-aside class="recom-aside">
-      <el-timeline>
-        <el-timeline-item v-for="(item, index) in timeList" :key="index">
-          <a :href="'/activity/' + item.ID + '/video'">
-            <el-card class="card-box">
-              <h4 class="title">{{ item.Name }}</h4>
-              <el-image style="width: 100%; height: 100px" :src="item.PictureURL" :fit="fit"></el-image>
-            </el-card>
+    <div class="recom-aside">
+          <a  v-for="(item, index) in timeList" :key="index" :href="'/activity/' + item.ID + '/video'" class="aside-item" >
+          <img :src="item.PictureURL" class="image">
+          <span class="title">{{ item.Name }}</span>
           </a>
-        </el-timeline-item>
-      </el-timeline>
-    </el-aside>
+    </div>
   </div>
 </template>
 <script>
@@ -98,15 +83,33 @@
   }
 
   .recom-aside {
+    width: 300px;
     background: #ffffff;
     height: calc(100vh - 100px);
     position: absolute;
     right: 0;
     bottom: 1rem;
+    overflow-y: auto;
   }
-
-  .card-box .title {
-    margin-bottom: 0.1rem;
+  .recom-aside  .aside-item{
+    position: relative;
+    z-index: 10;
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    /* height: 185px; */
+    background: #22222e;
+    margin: 18px;
+  }
+  .recom-aside  .aside-item .title {
+    display: inline-block; 
+    line-height: 186px;
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    top: 0;
+    left: 0;
   }
 
   #myAudioPlayer {
@@ -122,7 +125,8 @@
 
   .btn-wrap {
     display: inline-block;
-    margin: 20px auto;
+    width: calc(100vw - 470px);
+    margin: 20px 120px;
   }
 
   .preach-content {
@@ -138,9 +142,6 @@
   }
 
   @media screen and (max-width: 768px) {
-    body{
-      overflow-y: hidden;
-    }
     .main {
       width: 100%;
       /* height: calc(100% - 4rem); */
@@ -171,6 +172,7 @@
     }
 
     .recom-aside {
+      background: pink;
       height:calc(100% - 2.4rem);
       position: absolute;
       right: 0;

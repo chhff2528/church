@@ -61,7 +61,7 @@
       createFilter(queryString) {
         return restaurant => {
           return (
-            restaurant.Name.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+            restaurant.Name.toLowerCase().indexOf(queryString.toLowerCase()) != -1
           );
         };
       },
