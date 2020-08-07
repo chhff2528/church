@@ -164,9 +164,9 @@ body {
 
 .container .logo {
     display: inline-block;
-    margin-top: 0.05rem;
-    width: 0.36rem;
-    height: 0.51rem;
+    margin-top: 0.11rem;
+    width: 0.27rem;
+    height: 0.38rem;
 }
 
 .church-header .container .nav {
@@ -202,7 +202,12 @@ body {
     top: 0.1rem;
     right: 0.2rem;
 }
-
+.el-autocomplete .el-input__inner{
+    background: none;
+    border-radius: inherit;
+    height: 34px;
+    margin-top: 4px;
+}
 .my-autocomplete li {
     line-height: normal;
     padding: 0.07rem;
@@ -222,6 +227,80 @@ body {
 .church-header .church-search {
     cursor: pointer;
 }
+
+.preach-wrap {
+    position: fixed;
+    width: 100vw;
+    display: block;
+    height: 100%;
+  }
+
+  .recom-aside {
+    width: 300px;
+    background: #ffffff;
+    height: calc(100vh - 100px);
+    position: absolute;
+    right: 0;
+    bottom: 1rem;
+    overflow-y: auto;
+  }
+
+  .recom-aside .aside-item {
+    position: relative;
+    z-index: 10;
+    display: block;
+    /* width: 100%; */
+    margin: 18px;
+    font-size: 0.18rem;
+  }
+
+  .recom-aside .aside-item img {
+    width: 40%;
+  }
+
+  .recom-aside .aside-item .title {
+    display: inline-block;
+    width: 60%;
+    color: #000;
+    padding: 0.05rem 0.05rem 0.2rem 0.1rem;
+    vertical-align: top;
+    font-size: 0.15rem;
+  }
+
+  #myAudioPlayer {
+    display: inline-block;
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    margin-left: 120px;
+    text-align: center;
+    background: #fff;
+    padding: 0.5rem 0.2rem 0;
+  }
+
+  .main {
+    width: calc(100vw - 470px);
+    height: calc(100vh - 180px);
+    text-align: center;
+  }
+
+  .btn-wrap {
+    display: inline-block;
+    width: calc(100vw - 470px);
+    margin: 20px 120px;
+  }
+
+  .preach-content {
+    display: inline-block;
+  }
+
+  @media screen and (min-width: 769px) {
+    .preach-content {
+      width: 100%;
+      height: 100%;
+      margin-left: 120px;
+    }
+  }
 
 
 
@@ -271,6 +350,53 @@ body {
     .index-live{
         height: calc(100% - 1.25rem);
     }
+   /* 播放详情页 */
+   .main {
+    width: 100%;
+    /* height: calc(100% - 4rem); */
+    height: 1.8rem;
+    position: relative;
+    z-index: 100;
+  }
 
+  #myAudioPlayer {
+    width: 100%;
+    background: #fff;
+    height: 100%;
+    margin: 0 auto;
+    /* padding: 0.5rem 0.2rem 0; */
+  }
+
+  .preach-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .btn-wrap {
+    display: block;
+    position: absolute;
+    top: 1.8rem;
+    z-index: 999;
+    margin: 0.1rem;
+  }
+
+  .recom-aside {
+    /* background: pink; */
+    height: calc(100% - 2.4rem);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100% !important;
+    padding: 0.2rem 0.2rem 1rem 0;
+    overflow-y: auto;
+  }
+
+  /* 播放推荐 */
+  .recom-aside .aside-item {
+    display: inline-block;
+    /* width: 50%; */
+    padding-left: 0.2rem;
+    margin: 0 0 0.2rem 0;
+  }
     
 }
