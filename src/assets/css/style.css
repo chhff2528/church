@@ -227,7 +227,7 @@ body {
 
 
 /* 媒体查询 */
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
     .app-container{
        position: relative;
        top: 1.05rem;
@@ -238,6 +238,7 @@ body {
 
     .el-autocomplete {
         position: absolute;
+        width: calc(100% - 100px);
     }
 
     .church-header .container .item {
@@ -268,7 +269,8 @@ body {
     }
     /* 直播 */
     .index-live{
-        padding-top: 0.2rem;
         height: calc(100% - 1.25rem);
     }
+
+    
 }

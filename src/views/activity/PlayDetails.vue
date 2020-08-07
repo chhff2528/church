@@ -7,19 +7,19 @@
       <div id="player_container" class="preach-content" v-else></div>
     </div>
     <!-- 切换按钮 -->
-     <el-row class="btn-wrap mobile">
-        <a :href="'/activity/' + $route.params.id + '/video'" v-if="type == 'audio'">
-          <el-button type="primary" round>切换视频</el-button>
-        </a>
-        <a :href="'/activity/' + $route.params.id + '/audio'" v-else>
-          <el-button type="primary" round>切换MP3</el-button>
-        </a>
-      </el-row>
+    <el-row class="btn-wrap mobile">
+      <a :href="'/activity/' + $route.params.id + '/video'" v-if="type == 'audio'">
+        <el-button type="primary" round>切换视频</el-button>
+      </a>
+      <a :href="'/activity/' + $route.params.id + '/audio'" v-else>
+        <el-button type="primary" round>切换MP3</el-button>
+      </a>
+    </el-row>
     <div class="recom-aside">
-          <a  v-for="(item, index) in timeList" :key="index" :href="'/activity/' + item.ID + '/video'" class="aside-item" >
-          <img :src="item.PictureURL" class="image">
-          <span class="title">{{ item.Name }}</span>
-          </a>
+      <a v-for="(item, index) in timeList" :key="index" :href="'/activity/' + item.ID + '/video'" class="aside-item">
+        <img :src="'http://18.183.203.248/'+item.PictureURL" class="image">
+        <span class="title">{{ item.Name }}</span>
+      </a>
     </div>
   </div>
 </template>
@@ -91,18 +91,21 @@
     bottom: 1rem;
     overflow-y: auto;
   }
-  .recom-aside  .aside-item{
+
+  .recom-aside .aside-item {
     position: relative;
     z-index: 10;
     display: block;
     width: 100%;
     max-width: 260px;
     /* height: 185px; */
-    background: #22222e;
+    /* background: #22222e; */
     margin: 18px;
+    font-size: 0.18rem;
   }
-  .recom-aside  .aside-item .title {
-    display: inline-block; 
+
+  .recom-aside .aside-item .title {
+    display: inline-block;
     line-height: 186px;
     text-align: center;
     position: absolute;
@@ -113,8 +116,14 @@
   }
 
   #myAudioPlayer {
-    width: 576px;
-    margin: 30px auto;
+    display: inline-block;
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    margin-left: 120px;
+    text-align: center;
+    background: #fff;
+    padding: 0.5rem 0.2rem 0;
   }
 
   .main {
@@ -135,7 +144,7 @@
 
   @media screen and (min-width: 769px) {
     .preach-content {
-      width:100%;
+      width: 100%;
       height: 100%;
       margin-left: 120px;
     }
@@ -155,7 +164,7 @@
       background: #fff;
       height: 100%;
       margin: 0 auto;
-      padding: 0.5rem 0.2rem 0;
+      /* padding: 0.5rem 0.2rem 0; */
     }
 
     .preach-content {
@@ -172,14 +181,30 @@
     }
 
     .recom-aside {
-      background: pink;
-      height:calc(100% - 2.4rem);
+      /* background: pink; */
+      height: calc(100% - 2.4rem);
       position: absolute;
       right: 0;
       bottom: 0;
       width: 100% !important;
-      padding: 0.2rem 0.4rem 0.2rem 0.2rem;
+      padding: 0.2rem 0.2rem 1rem 0;
       overflow-y: auto;
+    }
+
+    /* 播放推荐 */
+    .recom-aside .aside-item {
+      display: inline-block;
+      width: 50%;
+      padding-left: 0.2rem;
+      margin: 0 0 0.2rem 0;
+    }
+
+    .recom-aside .aside-item .title {
+      line-height: 0.22rem;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      padding-left: 0.2rem;
     }
   }
 </style>
