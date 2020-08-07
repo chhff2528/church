@@ -9,10 +9,10 @@
     <!-- 切换按钮 -->
     <el-row class="btn-wrap mobile">
       <a :href="'/activity/' + $route.params.id + '/video'" v-if="type == 'audio'">
-        <el-button type="primary" round>切换视频</el-button>
+        <span class="btnLink" >视频</span>
       </a>
       <a :href="'/activity/' + $route.params.id + '/audio'" v-else>
-        <el-button type="primary" round>切换MP3</el-button>
+        <span class="btnLink">MP3</span>
       </a>
     </el-row>
     <div class="recom-aside">
