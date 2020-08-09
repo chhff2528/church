@@ -1,8 +1,8 @@
 <template>
   <div class="app-wrap">
     <Header  v-if="$route.meta.header != false"></Header>
-    <div class="pdt ">{{ this.isHeader }}{{$route.meta.cheader}}</div>
-    <div class="app-container" v-cloak>
+    <div class="pdt " v-if="$route.meta.header != false"></div>
+    <div class="app-container" :class="($route.meta.header == false ? 'app-notop' : '11')" v-cloak>
       <keep-alive :include="include">
         <router-view ref="router"></router-view>
       </keep-alive>

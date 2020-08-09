@@ -1,5 +1,13 @@
 <template>
   <div class="preach-wrap" ref="container">
+    <!-- 返回 -->
+    <div class="goto-index">
+      <p class="goto-contain"><a href="/" class="iconfont icon-xiangzuo">&nbsp; {{ this.title }}</a>
+      
+      <!-- <span>{{ this.title }}</span> -->
+      </p>
+      
+    </div>
     <div class="main">
       <!-- 音频区域 -->
       <div id="myAudioPlayer" v-if="type == 'audio'"></div>
@@ -36,6 +44,7 @@
     },
     data: function () {
       return {
+        title:'',
         timeList: [],
         currentVid: "",
         currentMP3: "",
@@ -52,6 +61,7 @@
         })
         .then(res => {
           that.$set(that, "timeList", res.dataall);
+          that.$set(that, "title", res.data[0].Name);
           that.$set(that, "currentVid", res.data[0].Vid);
           that.$set(that, "currentMP3", res.data[0].MP3Vid);
           if (type == "audio") {
@@ -76,5 +86,5 @@
   };
 </script>
 <style scoped>
-  
+
 </style>

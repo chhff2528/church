@@ -75,7 +75,7 @@
         jsonorder: {
           token: "3456dfklj3443ldsfd435",
           objectName: "video",
-          functionName: "getdata"
+          functionName: "geteditingdata"
         }
       };
       getData(params)

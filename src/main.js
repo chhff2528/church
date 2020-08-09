@@ -7,8 +7,8 @@ import router from "./router";
 import animate from "animate.css";
 import $ from "jquery";
 
-// import "@assets/iconfont/iconfont";
-// import "@assets/iconfont/iconfont.css";
+import "@assets/iconfont/iconfont";
+import "@assets/iconfont/iconfont.css";
 // import "@assets/js/media_750";
 import "vue-ydui/dist/ydui.base.css";
 import "@assets/css/base.css";

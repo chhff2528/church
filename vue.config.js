@@ -8,7 +8,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-  assetsDir: "h5",
+  assetsDir: "church",
   // 关闭eslint规范
   lintOnSave:false,
   devServer:{
