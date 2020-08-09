@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import module from "./module";
 import Index from "@views/home/Index";
+import $store from "../store";
 import Loading from "@views/Loading";
 
 Vue.use(Router);
@@ -15,7 +16,7 @@ const router = new Router({
       meta: {
         title: "首页",
         keepAlive: true,
-        isHeader: true,
+        header: true,
         backgroundColor: "#fff"
       },
       component: Index
@@ -27,7 +28,7 @@ const router = new Router({
       meta: {
         title: " 加载中",
         keepAlive: true,
-        isHeader: false
+        footer: false
       },
       component: Loading
     },
@@ -38,7 +39,7 @@ const router = new Router({
         title: "信息管理",
         keepAlive: false,
         backgroundColor: "#ffffff",
-        isHeader: false
+        header: false
       },
       component: () => import("@views/UserList.vue")
     },
@@ -53,18 +54,6 @@ const router = new Router({
       },
       component: () => import("@views/Reg.vue")
     }
-    /* ,
-    {
-      path: "*",
-      name: "NotDefined",
-      meta: {
-        title: "页面找不到",
-        keepAlive: true,
-        home: false,
-        backgroundColor: "#F4F6FB"
-      },
-      component: NotDefined
-    } */
   ]
 });
 
@@ -79,6 +68,23 @@ router.replace = function(...args) {
   replace.call(router, ...args);
 };
 
+// router.beforeEach((to, form, next) => {
+//   // const { title, backgroundColor, footer, home, auth } = to.meta;
+//   const { title, backgroundColor, footer} = to.meta;
+//   // console.log(to.name, form.name);
+//   // if (auth === true && !$store.state.app.token) {
+//   //   if (form.name === "Login") return;
+//   //   return toLogin(true, to.fullPath);
+//   // }
+//   document.title = title || process.env.VUE_APP_NAME || "church";
+//   //判断是否显示底部导航
+//   footer === true ? $store.commit("SHOW_FOOTER") : $store.commit("HIDE_FOOTER");
 
+//   //控制悬浮按钮是否显示
+//   // home === false ? $store.commit("HIDE_HOME") : $store.commit("SHOW_HOME");
+// // 
+//   $store.commit("BACKGROUND_COLOR", backgroundColor || "#F5F5F5");
+
+// });
 
 export default router;

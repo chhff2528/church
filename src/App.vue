@@ -1,7 +1,7 @@
 <template>
   <div class="app-wrap">
-    <Header v-if="isHeader === ture"></Header>
-    <div class="pdt"></div>
+    <Header  v-if="$route.meta.header != false"></Header>
+    <div class="pdt ">{{ this.isHeader }}{{$route.meta.cheader}}</div>
     <div class="app-container" v-cloak>
       <keep-alive :include="include">
         <router-view ref="router"></router-view>
@@ -13,7 +13,6 @@
 function isKeepAlive($route) {
   return $route.meta.keepAlive === undefined || $route.meta.keepAlive;
 }
-
 import Header from "@components/Header";
 import { mapGetters } from "vuex";
 export default {
@@ -23,12 +22,12 @@ export default {
       include: isKeepAlive(this.$route) ? [this.$route.name] : []
     };
   },
-  // computed: mapGetters(["isHeader"]),
   provide() {
     return {
       app: this
     };
   },
+  // computed: mapGetters(["footer"]),
   components: {
     Header
   }

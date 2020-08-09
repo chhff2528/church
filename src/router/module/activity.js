@@ -9,7 +9,7 @@ export default [
     meta: {
       title: "福音",
       keepAlive: false,
-      isHeader: true,
+      footer: true,
       backgroundColor: "#fff"
     },
     component: () => import("@views/activity/FuYin.vue")
@@ -20,7 +20,6 @@ export default [
     meta: {
       title: "日常证道",
       keepAlive: false,
-      isHeader: false,
       backgroundColor: "#fff"
     },
     component: () => import("@views/activity/Live.vue")
@@ -30,8 +29,8 @@ export default [
     name: "PlayDetails",
     meta: {
       title: "详情播放",
-      isHeader: true,
-      keepAlive: false
+      keepAlive: false,
+      header:false
     },
     component: () => import("@views/activity/PlayDetails.vue")
   }
