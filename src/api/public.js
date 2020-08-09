@@ -21,36 +21,13 @@ export function getArticleBanner() {
 }
 
 /**
- * 文章分类列表
+ * 增删修改
  * @returns {*}
  */
-export function getArticleCategory() {
-  return request.get("/article/category/list", {});
+export function getUserList(params) {
+  return request.get("/receiever.php", params,{ login: true }
+  );
 }
 
-/**
- * 文章 热门列表
- * @returns {*}
- */
-export function getArticleHotList() {
-  return request.get("/article/hot/list", {});
-}
-
-/**
- * 文章列表
- * @returns {*}
- */
-export function getArticleList(q, cid) {
-  return request.get("/article/list/" + cid, q);
-}
-
-
-/**
- * 文章详情
- * @returns {*}
- */
-export function getArticleDetails(id) {
-  return request.get("/article/details/" + id, {});
-}
 
 

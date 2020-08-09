@@ -39,20 +39,20 @@ const router = new Router({
         title: "信息管理",
         keepAlive: false,
         backgroundColor: "#ffffff",
-        header: false
+        header: true
       },
       component: () => import("@views/UserList.vue")
     },
     {
-      path: "/reg",
-      name: "Reg",
+      path: "/login",
+      name: "Login",
       meta: {
-        title: "注册",
+        title: "登陆",
         keepAlive: false,
         backgroundColor: "#ffffff",
         isHeader: false
       },
-      component: () => import("@views/Reg.vue")
+      component: () => import("@views/Login.vue")
     }
   ]
 });
