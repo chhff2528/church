@@ -46,10 +46,11 @@
             console.log(this.ruleForm)
             const CACHE_KEY = "CHURCH_USER";
             if (this.ruleForm.user == "church123" && this.ruleForm.pass== "123456") {
-              cookie.set(CACHE_KEY, this.ruleForm.user);
+              cookie.set(CACHE_KEY,this.ruleForm.user, 60);
               window.location.href = "/userlist";
             } else {
               this.$message.error('亲～，账号或密码输入有误。');
+              cookie.remove(CACHE_KEY);
             }
           } else {
             console.log('error submit!!');

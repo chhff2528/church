@@ -147,6 +147,7 @@
               })
               .catch(function (error) {
                 this.$message.error('Oops~，网络错误了，请刷新重试～');
+                
               });
           } else {
             console.log('error submit!!');
