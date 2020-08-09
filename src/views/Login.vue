@@ -68,7 +68,7 @@
 <style scoped>
   .form-page {
     background: #fff;
-    max-width: 10.8rem;
+    max-width: 4rem;
     margin: 0.2rem auto;
     padding: 0.2rem;
   }
