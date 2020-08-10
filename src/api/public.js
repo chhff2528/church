@@ -25,8 +25,7 @@ export function getArticleBanner() {
  * @returns {*}
  */
 export function getUserList(params) {
-  return request.get("/receiever.php", params,{ login: true }
-  );
+  return request.get("/receiever.php", params);
 }
 
 

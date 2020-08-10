@@ -4,6 +4,7 @@ import module from "./module";
 import Index from "@views/home/Index";
 import $store from "../store";
 import Loading from "@views/Loading";
+import cookie from "@utils/store/cookie";
 
 Vue.use(Router);
 
@@ -39,7 +40,8 @@ const router = new Router({
         title: "信息管理",
         keepAlive: false,
         backgroundColor: "#ffffff",
-        header: true
+        header: true,
+        requireAuth:true
       },
       component: () => import("@views/UserList.vue")
     },
@@ -67,24 +69,23 @@ router.replace = function(...args) {
   this.isReplace = true;
   replace.call(router, ...args);
 };
+// 使用router.beforeEach注册一个全局前置守卫,判断用户是否登录
+router.beforeEach((to, from, next) => {
+  const CACHE_KEY = "CHURCH_USER";
+	if (to.matched.some(r => r.meta.requireAuth)) {          
+     //这里的requireAuth为路由中定义的 meta:{requireAuth:true}，意思为：该路由添加该字段，表示进入该路由需要登陆的
+		if (cookie.has(CACHE_KEY)) {
+			next();
+		} else {
+			next({
+				path: '/login',
+				query: {redirect: to.fullPath}
+			})
+		}
+	} else {
+		next();
+		}
+	})
 
-// router.beforeEach((to, form, next) => {
-//   // const { title, backgroundColor, footer, home, auth } = to.meta;
-//   const { title, backgroundColor, footer} = to.meta;
-//   // console.log(to.name, form.name);
-//   // if (auth === true && !$store.state.app.token) {
-//   //   if (form.name === "Login") return;
-//   //   return toLogin(true, to.fullPath);
-//   // }
-//   document.title = title || process.env.VUE_APP_NAME || "church";
-//   //判断是否显示底部导航
-//   footer === true ? $store.commit("SHOW_FOOTER") : $store.commit("HIDE_FOOTER");
-
-//   //控制悬浮按钮是否显示
-//   // home === false ? $store.commit("HIDE_HOME") : $store.commit("SHOW_HOME");
-// // 
-//   $store.commit("BACKGROUND_COLOR", backgroundColor || "#F5F5F5");
-
-// });
 
 export default router;

@@ -22,7 +22,6 @@
 
 <script>
   import UserForm from "@components/UserForm";
-  import cookie from "@utils/store/cookie";
   import {
     getUserList
   } from "@api/public";
@@ -37,13 +36,6 @@
       };
     },
     mounted: function () {
-      const CACHE_KEY = "CHURCH_USER";
-      if (!cookie.has(CACHE_KEY)) {
-        // cookie.clearAll();
-        // cookie.set(CACHE_KEY, 1);
-        window.location.href = "/login";
-        return false;
-      }
       let that = this;
       let params = {
         jsonorder: {
@@ -67,28 +59,35 @@
       },
       handleDelete(id) {
         let that = this;
-        let idJson = {
-          id: id
-        };
-        let params = {
-          jsonorder: {
-            token: "3456dfklj3443ldsfd435",
-            objectName: "dictionary",
-            functionName: "delete",
-            data: idJson
-          }
-        };
-        getData(params)
-          .then(res => {
-            this.$message({
-              message: "恭喜你～，删除成功",
-              type: "success"
+          let idJson = {
+            id: id
+          };
+          let params = {
+            jsonorder: {
+              token: "3456dfklj3443ldsfd435",
+              objectName: "dictionary",
+              functionName: "delete",
+              data: idJson
+            }
+          };
+        this.$confirm('此操作将永久删除该条数据, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(function () {   
+          getUserList(params)
+            .then(res => {
+              //成功走这里
+              window.location.reload();
+            })
+            .catch(function (error) {
+             this.$message.error("Oops~，网络错误了，请刷新重试～");
             });
-            window.location.reload();
-          })
-          .catch(function (error) {
-            this.$message.error("Oops~，网络错误了，请刷新重试～");
-          });
+
+        }).catch(() => {
+          console.log("取消删除");
+        });
+        // end
       }
     }
   };
