@@ -19,13 +19,17 @@ const Scroll = {
   },
   listenTouchDirection: function() {
     this.addHandler(window, "scroll", function() {
+    
       const wh = window.innerHeight,
         st = window.scrollY;
+        console.log(wh+"--------"+st);
       events
         .filter(e => e.dom.scrollHeight && e.dom.scrollHeight > 0)
         .forEach(e => {
           var dh = e.dom.scrollHeight;
+          console.log(dh);
           var s = Math.ceil((st / (dh - wh)) * 100);
+          console.log(s);
           if (s > 85) e.fn();
         });
     });

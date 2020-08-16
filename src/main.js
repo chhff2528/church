@@ -5,6 +5,7 @@ import App from "./App.vue";
 import store from "./store";
 import router from "./router";
 import animate from "animate.css";
+import $scroll from "@utils/loading";
 import $ from "jquery";
 
 import "@assets/iconfont/iconfont";
@@ -18,6 +19,8 @@ Vue.use(animate);
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 Vue.config.devtools = process.env.NODE_ENV !== "production";
+
+Vue.prototype.$scroll = $scroll;
 
 const $vm = new Vue({
   router,
