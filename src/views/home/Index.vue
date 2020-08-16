@@ -26,11 +26,13 @@ export default {
   },
   mounted: function() {
     let that = this;
+    let page={"pagenumber":"1"};
     let params = {
       jsonorder: {
         token: "3456dfklj3443ldsfd435",
         objectName: "video",
-        functionName: "getdata"
+        functionName: "getcurrentpages",
+        data:page
       }
     };
     getData(params)
