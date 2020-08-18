@@ -45,7 +45,7 @@ export default {
       // const { page, limit } = this;
        let that = this;
        if (that.loading) return; //阻止下次请求（false可以进行请求）；
-      if (that.loadend) return; //阻止结束当前请求（false可以进行请求）；
+      if (that.loaded) return; //阻止结束当前请求（false可以进行请求）；
       that.loading = true;
       let pagenum={"pagenumber":that.page};
       let params = {
@@ -59,10 +59,11 @@ export default {
       getData(params)
         .then(res => {
           // that.$set(that, "menus", res.data);
-           that.menus = that.menus.concat(res.data);
-          //  hat.menus.push.apply(that.menus, res.data);
+          //  that.menus = that.menus.concat(res.data);
+           that.menus.push.apply(that.menus, res.data);
            that.loading = false;
            that.loaded = res.data.length < that.limit;
+           console.log(this.loading+"------"+this.loaded);
           that.page = that.page + 1;
         })
         .catch(function(error) {
