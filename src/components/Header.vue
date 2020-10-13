@@ -46,6 +46,11 @@
             name: "福音",
             url: "/activity/fuyin"
           }
+          ,
+          {
+            name: "查经",
+            url: "/activity/chajing"
+          }
         ]
       };
     },

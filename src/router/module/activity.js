@@ -15,6 +15,17 @@ export default [
     component: () => import("@views/activity/FuYin.vue")
   },
   {
+    path: "/activity/chajing",
+    name: "ChaJing",
+    meta: {
+      title: "查经",
+      keepAlive: false,
+      footer: true,
+      backgroundColor: "#fff"
+    },
+    component: () => import("@views/activity/Chajing.vue")
+  },
+  {
     path: "/activity/Live",
     name: "Live",
     meta: {
